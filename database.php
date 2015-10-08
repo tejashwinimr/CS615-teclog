@@ -1,14 +1,10 @@
 <?php
 
-// DB conn info
+function createNote($content) {
     $host = "us-cdbr-azure-west-c.cloudapp.net";
     $user = "bcfde92a608269";
     $pwd = "815873fb";
     $db = "acsm_8cd991cf173de96";
-    
-
-function createNote($content) {
-
     try {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -22,6 +18,10 @@ function createNote($content) {
 }
 
 function getNotes() {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -36,6 +36,10 @@ function getNotes() {
 }
 
 function getMinId() {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -50,6 +54,10 @@ function getMinId() {
 }
 
 function getMaxId() {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -64,6 +72,10 @@ function getMaxId() {
 }
 
 function isValid($id) {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -79,6 +91,10 @@ function isValid($id) {
 }
 
 function deleteNote($id) {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -92,6 +108,10 @@ function deleteNote($id) {
 }
 
 function updateNote($id, $newContent) {
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
     try{
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
