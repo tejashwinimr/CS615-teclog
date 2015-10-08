@@ -1,6 +1,6 @@
 <?php
 
-// DB connection info
+// DB conn info
     $host = "us-cdbr-azure-west-c.cloudapp.net";
     $user = "bcfde92a608269";
     $pwd = "815873fb";
@@ -13,7 +13,7 @@ function createNote($content) {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("INSERT INTO notes (content) VALUES (:content);");
+        $query = $conn->prepare("INSERT INTO notes (content) VALUES (:content);");
         $query->bindParam(':content', $content);
         $query->execute();
     } catch (PDOException $e) {
@@ -26,7 +26,7 @@ function getNotes() {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("SELECT * FROM notes ORDER BY last_modified DESC;");
+        $query = $conn->prepare("SELECT * FROM notes ORDER BY last_modified DESC;");
         $query->execute();
 
         return $query->fetchAll();
@@ -40,7 +40,7 @@ function getMinId() {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("SELECT min(id) FROM notes;");
+        $query = $conn->prepare("SELECT min(id) FROM notes;");
         $query->execute();
 
         return $query->fetch()[0];
@@ -54,7 +54,7 @@ function getMaxId() {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("SELECT max(id) FROM notes;");
+        $query = $conn->prepare("SELECT max(id) FROM notes;");
         $query->execute();
 
         return $query->fetch()[0];
@@ -68,7 +68,7 @@ function isValid($id) {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("SELECT * FROM notes WHERE id = :id;");
+        $query = $conn->prepare("SELECT * FROM notes WHERE id = :id;");
         $query->bindParam(':id', $id);
         $query->execute();
 
@@ -83,7 +83,7 @@ function deleteNote($id) {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("DELETE FROM notes WHERE id = :id;");
+        $query = $conn->prepare("DELETE FROM notes WHERE id = :id;");
         $query->bindParam(':id', $id);
         $query->execute();
     } catch (PDOException $e) {
@@ -96,7 +96,7 @@ function updateNote($id, $newContent) {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-        $query = $connection->prepare("UPDATE notes
+        $query = $conn->prepare("UPDATE notes
                                        SET content = :content,
                                            last_modified = CURRENT_TIMESTAMP
                                        WHERE id = :id");
