@@ -8,7 +8,7 @@
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         $sql = "CREATE TABLE IF NOT EXISTS notes (
-                   id INT(11) AUTO INCREMENT,
+                   id INT(11) AUTO_INCREMENT,
                    last_modified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                    content text,
                    PRIMARY KEY(id)
