@@ -31,12 +31,12 @@ class Db {
 
     public function createTable() {
         try {
-            $sql = "CREATE TABLE registration_tbl(
-                        id INT NOT NULL AUTO_INCREMENT, 
-                        PRIMARY KEY(id),
-                        name VARCHAR(30),
-                        email VARCHAR(30),
-                        date DATE)";
+            $sql = "CREATE TABLE IF NOT EXISTS notes (
+                       id INT(11) AUTO_INCREMENT,
+                       last_modified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                       content text,
+                       PRIMARY KEY(id)
+                    );";
             $this->con->query($sql);
             return true;
         } catch (PDOException $e) {
