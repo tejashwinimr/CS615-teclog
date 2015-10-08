@@ -1,10 +1,17 @@
 <?php
 
+// DB connection info
+    $host = "us-cdbr-azure-west-c.cloudapp.net";
+    $user = "bcfde92a608269";
+    $pwd = "815873fb";
+    $db = "acsm_8cd991cf173de96";
+    
+
 function createNote($content) {
 
     try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("INSERT INTO notes (content) VALUES (:content);");
         $query->bindParam(':content', $content);
@@ -15,9 +22,9 @@ function createNote($content) {
 }
 
 function getNotes() {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("SELECT * FROM notes ORDER BY last_modified DESC;");
         $query->execute();
@@ -29,9 +36,9 @@ function getNotes() {
 }
 
 function getMinId() {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("SELECT min(id) FROM notes;");
         $query->execute();
@@ -43,9 +50,9 @@ function getMinId() {
 }
 
 function getMaxId() {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("SELECT max(id) FROM notes;");
         $query->execute();
@@ -57,9 +64,9 @@ function getMaxId() {
 }
 
 function isValid($id) {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("SELECT * FROM notes WHERE id = :id;");
         $query->bindParam(':id', $id);
@@ -72,9 +79,9 @@ function isValid($id) {
 }
 
 function deleteNote($id) {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("DELETE FROM notes WHERE id = :id;");
         $query->bindParam(':id', $id);
@@ -85,9 +92,9 @@ function deleteNote($id) {
 }
 
 function updateNote($id, $newContent) {
-    try {
-        $connection = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=minotes', "minotes", "minotes");
-        $connection->exec('SET search_path TO public');
+    try{
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         $query = $connection->prepare("UPDATE notes
                                        SET content = :content,
