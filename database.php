@@ -29,7 +29,32 @@ class Db {
         
     }
 
-    function createNote($content) {
+    public function createTable() {
+        try {
+            $sql = "CREATE TABLE registration_tbl(
+                        id INT NOT NULL AUTO_INCREMENT, 
+                        PRIMARY KEY(id),
+                        name VARCHAR(30),
+                        email VARCHAR(30),
+                        date DATE)";
+            $this->con->query($sql);
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function dropTable() {
+        try {
+            $sql = "DROP TABLE notes;";
+            $this->con->query($sql);
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function createNote($content) {
         try {
             $query = $this->con->prepare("INSERT INTO notes (content) VALUES (:content);");
             $query->bindParam(':content', $content);
@@ -39,7 +64,7 @@ class Db {
         }
     }
 
-    function getNotes() {
+    public function getNotes() {
         try{
             $query = $this->con->prepare("SELECT * FROM notes ORDER BY last_modified DESC;");
             $query->execute();
@@ -49,7 +74,7 @@ class Db {
         }
     }
 
-    function getMinId() {
+    public function getMinId() {
         try{
             $query = $this->con->prepare("SELECT min(id) FROM notes;");
             $query->execute();
@@ -59,7 +84,7 @@ class Db {
         }
     }
 
-    function getMaxId() {
+    public function getMaxId() {
         try{       
             $query = $this->con->prepare("SELECT max(id) FROM notes;");
             $query->execute();
@@ -69,7 +94,7 @@ class Db {
         }
     }
 
-    function isValid($id) {
+    public function isValid($id) {
         try{
             $query = $this->con->prepare("SELECT * FROM notes WHERE id = :id;");
             $query->bindParam(':id', $id);
@@ -80,7 +105,7 @@ class Db {
         }
     }
 
-    function deleteNote($id) {
+    public function deleteNote($id) {
         try{          
             $query = $this->con->prepare("DELETE FROM notes WHERE id = :id;");
             $query->bindParam(':id', $id);
@@ -90,7 +115,7 @@ class Db {
         }
     }
 
-    function updateNote($id, $newContent) {
+    public function updateNote($id, $newContent) {
         try{
             $query = $this->con->prepare("UPDATE notes
                                            SET content = :content,
