@@ -5,7 +5,7 @@ class Db {
     protected $con;
     private $host = "us-cdbr-azure-west-c.cloudapp.net";
     private $user = "bcfde92a608269";
-    private $pwd = "815873fb";
+    private $pwd = "815873fbr";
     private $db = "acsm_8cd991cf173de96";
     
     //Creates a PDO conection & sets error mode to exceptions
