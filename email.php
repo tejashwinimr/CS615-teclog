@@ -3,6 +3,7 @@
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
+	var_dump(function_exists('curl_version'));
 
 	 $url = 'https://api.sendgrid.com/';
 	 $user = 'azure_0632f0b7fa0883f933161d8e839dbfee@azure.com';
