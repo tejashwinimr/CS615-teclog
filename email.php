@@ -37,7 +37,7 @@
 	 $response = curl_exec($session);
 	 curl_close($session);
 
-	 echo $resposne;
+	 echo $response;
 	 // print everything out
 	 print_r($response);
 
