@@ -6,7 +6,7 @@
 
 	 $url = 'https://api.sendgrid.com/';
 	 $user = 'azure_0632f0b7fa0883f933161d8e839dbfee@azure.com';
-	 $pass = 'password'; 
+	 $pass = 'testing123'; 
 
 	 $params = array(
 	      'api_user' => $user,
@@ -37,6 +37,7 @@
 	 $response = curl_exec($session);
 	 curl_close($session);
 
+	 echo $resposne;
 	 // print everything out
 	 print_r($response);
 
