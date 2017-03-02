@@ -20,6 +20,12 @@ a.active {
 h1, h2, h3, h4, h5, h6 {
     color: #E19807
 }
+span {
+    display: block;
+}
+p {
+    font-family: "Times New Roman", Times, serif;
+}
 
 #notes-list {
     width: 300px; 
@@ -27,6 +33,8 @@ h1, h2, h3, h4, h5, h6 {
     border-right: 1px solid lightgrey; 
     height: 100%; 
     background-image: url("images/ListBg.png"); 
+    background-color : green;
+
     background-repeat: repeat;
     overflow: none;
 }
