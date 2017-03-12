@@ -7,7 +7,7 @@
 	{
 		if ($password == "admin123")
 		{
-			header("location: Index.php");
+			header("location: index1.php");
 		}
 		else
 		{
