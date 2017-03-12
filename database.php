@@ -9,6 +9,14 @@ class Db {
     private $db = "techlogdb";
     
     //Creates a PDO conection & sets error mode to exceptions
+    /**
+    * @author: 
+    */
+    /**
+     * comment
+     * @return type
+     * @
+     */
     public function __construct(){
     
         try { 
