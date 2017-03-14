@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL );
+error_reporting(-1);
 ini_set('display_errors', 'On');
 
 require_once "lib/Smarty.class.php";
@@ -8,6 +8,7 @@ require_once "database.php";
 //connect to our db
 $db = new Db();
 
+// Checking valid Cookie
 if(isset($_COOKIE['ACTIVE_NOTE_ID'])) {
     if(!$db->isValid($_COOKIE['ACTIVE_NOTE_ID'])) {
         setcookie("ACTIVE_NOTE_ID", $db->getMaxId());
@@ -17,6 +18,8 @@ if(isset($_COOKIE['ACTIVE_NOTE_ID'])) {
     }
 }
 
+
+// Different actions based on 'action'
 if(isset($_REQUEST['action'])) {
     switch($_REQUEST['action']) {
         case 'delete':

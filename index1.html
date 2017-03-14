@@ -1,0 +1,66 @@
+
+<html>
+<head>
+    <title>miNotes 
+</title>
+    <link rel="stylesheet" lang="text/css" href="styles.css"/>
+</head>
+<body>
+
+
+<div id="container">
+    
+    <div id="notes-list">
+        <div id="notes-list-header" class="header">
+            <span class="left">miNotes</span>
+            <span class="right"><a href="index.php?action=new"><img src="images/CreateNote.png" alt="Create new note."></a></span>
+        </div>
+                    <div class="notes-list-item">
+                <span class="notes-list-item-title"><a href="index.php?action=navigate&id=51" >New note.</a></span>
+                <span class="notes-list-item-timestamp">Mar 11</span>
+				
+            </div>      
+                    <div class="notes-list-item">
+                <span class="notes-list-item-title"><a href="index.php?action=navigate&id=31" >New note.</a></span>
+                <span class="notes-list-item-timestamp">Mar 09</span>
+            </div>      
+                    <div class="notes-list-item">
+                <span class="notes-list-item-title"><a href="index.php?action=navigate&id=1" >New note.hhhhhhhh</a></span>
+                <span class="notes-list-item-timestamp">Mar 09</span>
+            </div>      
+                    <div class="notes-list-item">
+                <span class="notes-list-item-title"><a href="index.php?action=navigate&id=11" class='active'>New note.</a></span>
+                <span class="notes-list-item-timestamp">Mar 02</span>
+            </div>      
+            </div>
+    
+    <div id="notepad">
+        <div id="notepad-header" class="header">
+            <span align="Left" id="timestamp">March 02, 04:47:06 PM</span>
+            
+        </div>
+		<div id="buttons">
+			
+			<input type="button" class="save-title" onclick="document.getElementById('updateForm').submit();" Value="Save">
+			<input type="button" class="delete-title" onclick="location.href='index.php?action=delete'" Value="Delete">
+						
+        </div>
+		<div>
+			
+                <form action="index.php" method="POST" id="updateForm">
+                    <div id="tinymce-holder">
+                        <textarea rows="20" cols="90" id="content" name="content" style="margin: 20px; border: 1px grey solid">New note.</textarea>
+                    </div>  
+                    <input type="hidden" name="action" value="update"/>
+                </form>
+				    </div>
+    
+	
+	</div>
+	
+</div>
+<span class="save-title" ><a href="#" onclick="document.getElementById('updateForm').submit();">Save</a></span>
+<span class="delete-title"><a href="index.php?action=delete">Delete</a></span>
+			
+</body>
+</html>
