@@ -17,8 +17,10 @@
     
     <div id="notepad">
         <div id="notepad-header" class="header">
-            <span><a href="#" onclick="document.getElementById('updateForm').submit();">Save</a></span>&nbsp;|&nbsp;<span><a href="index1.php?action=delete">Delete</a></span>
-            <span class="right">Fname Lname</span>
+        <input type="button" class="save-title" onclick="document.getElementById('updateForm').submit();" Value="Save">
+            <input type="button" class="delete-title" onclick="location.href='index1.php?action=delete'" Value="Delete">
+            <!-- <span><a href="#" onclick="document.getElementById('updateForm').submit();">Save</a></span>&nbsp;|&nbsp;<span><a href="index1.php?action=delete">Delete</a></span> -->
+            <!-- <span class="right">Fname Lname</span> -->
         </div>
         <div>
             {foreach from=$notes item=note}
